@@ -2,7 +2,7 @@ export const init = (initialState) => {
   return initialState;
 };
 
-// Updates session/break minutes accordingly
+// Updates session/break minutes and total seconds accordingly
 export const setClockLength = (state, type) => {
   const [clock, action] = type.split("-");
   const control = clock + "Min";
@@ -19,19 +19,8 @@ export const setClockLength = (state, type) => {
     }
   }
   newTimer[control] = minutes;
-  newTimer["secondsLeft"] = updateSeconds(state, control, minutes);
+  newTimer["secondsLeft"] = minutes * 60;
   return newTimer;
-};
-
-// Updates total seconds left
-const updateSeconds = ({ inSession, secondsLeft }, control, minutes) => {
-  if (
-    (control === "sessionMin" && inSession) ||
-    (control === "breakMin" && !inSession)
-  ) {
-    return minutes * 60;
-  }
-  return secondsLeft;
 };
 
 // Resets audio component
