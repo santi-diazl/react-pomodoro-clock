@@ -22,9 +22,6 @@ export const GlobalStyle = createGlobalStyle`
         display: none;
     }
     @media screen and (max-width: 575.98px) {
-        audio {
-            display: inline;
-        }
         html, body {
             margin: 0;
             padding: 0;
