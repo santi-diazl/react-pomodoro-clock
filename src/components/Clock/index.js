@@ -6,7 +6,7 @@ import Control from "../Button";
 import Display from "../Display";
 import Beep from "../Beep";
 // Config
-import { state as initialState, state } from "../../config";
+import { state as initialState } from "../../config";
 import beepSource from "../../beep.wav";
 import startIcon from "../../svgs/play-circle-solid.svg";
 import pauseIcon from "../../svgs/pause-circle-solid.svg";
