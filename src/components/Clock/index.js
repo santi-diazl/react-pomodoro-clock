@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useRef } from "react";
 // Styles
 import { Wrapper } from "./Clock.styles";
 // Components
-import Control from "../Button";
+import Control from "../Control";
 import Display from "../Display";
 import Beep from "../Beep";
 // Config
@@ -20,10 +20,11 @@ import { reducer } from "../../reducer";
 
 const Clock = () => {
   const [clockState, setClockState] = useReducer(reducer, initialState);
-  const { breakMin, sessionMin, secondsLeft, inSession, isRunning, on } =
+  const { breakMin, sessionMin, secondsLeft, inSession, isRunning } =
     clockState;
   const interval = useRef(0);
   const beep = useRef();
+
   // Plays alert sound when 0 seconds left
   useEffect(() => {
     if (secondsLeft) {
@@ -60,15 +61,9 @@ const Clock = () => {
     };
   }, [clockState, isRunning, secondsLeft]);
 
-  const lengthControlProps = {
+  const stateProps = {
     updateClockState: setClockState,
-    isRunning: isRunning,
-    inSession: inSession,
-  };
-
-  const startPauseResetProps = {
-    updateClockState: setClockState,
-    inSession: inSession,
+    state: clockState,
   };
 
   return (
@@ -82,12 +77,12 @@ const Clock = () => {
               <Control
                 id="session-decrement"
                 icon={decrementIcon}
-                {...lengthControlProps}
+                {...stateProps}
               />
               <Control
                 id="session-increment"
                 icon={incrementIcon}
-                {...lengthControlProps}
+                {...stateProps}
               />
             </div>
             <span id="session-label">Session</span>
@@ -98,12 +93,12 @@ const Clock = () => {
               <Control
                 id="break-decrement"
                 icon={decrementIcon}
-                {...lengthControlProps}
+                {...stateProps}
               />
               <Control
                 id="break-increment"
                 icon={incrementIcon}
-                {...lengthControlProps}
+                {...stateProps}
               />
             </div>
             <span id="break-label">Break</span>
@@ -114,23 +109,17 @@ const Clock = () => {
             <Control
               id="start_stop"
               icon={!isRunning ? startIcon : pauseIcon}
-              {...startPauseResetProps}
+              {...stateProps}
             />
             <Control
               id="reset"
               icon={resetIcon}
               beepRef={beep}
-              {...startPauseResetProps}
+              {...stateProps}
             />
           </div>
         </div>
-        <span id="timer-label">
-          {inSession && on
-            ? "In session"
-            : !inSession && on
-            ? "On break"
-            : "🍅"}
-        </span>
+        <span id="timer-label">{inSession ? "In session" : "On break"}</span>
       </Wrapper>
       <Beep source={beepSource} ref={beep} />
     </>

@@ -5,5 +5,4 @@ export const state = {
   secondsLeft: 1500,
   inSession: true,
   isRunning: false,
-  on: false,
 };

@@ -40,7 +40,7 @@ export const reducer = (state, { type, payload }) => {
       newState = { ...setClockLength(state, type) };
       break;
     case "start_stop":
-      newState = { isRunning: !isRunning ? true : false, on: true };
+      newState = { isRunning: !isRunning ? true : false };
       break;
     case "countDown":
       newState = { secondsLeft: secondsLeft - 1 };
