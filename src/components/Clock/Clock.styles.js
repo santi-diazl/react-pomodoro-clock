@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  background-color: ${({ inSession }) =>
-    inSession ? "var(--red)" : "var(--green)"};
-  font-family: "Noto Sans Display", sans-serif;
+export const StyledClock = styled.div`
+  background-color: ${({inSession}) =>
+    inSession ? 'var(--red)' : 'var(--green)'};
+  font-family: 'Noto Sans Display', sans-serif;
   margin: auto;
   height: auto;
   padding: 25px;

@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const Display = ({ timeLeft }) => <div id="time-left">{timeLeft}</div>;
+const Display = ({timeLeft}) => <div id="time-left">{timeLeft}</div>;
 
 export default Display;

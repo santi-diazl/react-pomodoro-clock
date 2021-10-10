@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 // Components
-import Clock from "./components/Clock";
+import Clock from './components/Clock';
 // Styles
-import { GlobalStyle } from "./GlobalStyle";
+import {GlobalStyle} from './GlobalStyle';
 
 const App = () => (
   <>
